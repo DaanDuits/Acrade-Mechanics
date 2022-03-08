@@ -22,19 +22,19 @@ public class PlayerMovement : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.W))
         {
-            gameObject.transform.position += player.forward * Speed * Time.deltaTime;
+            gameObject.transform.position += -player.forward * Speed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.S))
         {
-            gameObject.transform.position -= player.forward * Speed * Time.deltaTime;
+            gameObject.transform.position -= -player.forward * Speed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.A))
         {
-            gameObject.transform.position -= player.right * Speed * Time.deltaTime;
+            gameObject.transform.position -= -player.right * Speed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            gameObject.transform.position += player.right * Speed * Time.deltaTime;
+            gameObject.transform.position += -player.right * Speed * Time.deltaTime;
         }
     }
 }
