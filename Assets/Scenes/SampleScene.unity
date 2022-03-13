@@ -391,8 +391,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79896801dbd45e3459fa9c8d80b6506c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   mouseSens: 100
   Body: {fileID: 1406036737}
 --- !u!1 &1406036734
@@ -470,8 +470,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c067aefe2aeacfc4fbccde5e5a745c66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   Speed: 6
   jumpHeight: 0.8
   player: {fileID: 780875790}
