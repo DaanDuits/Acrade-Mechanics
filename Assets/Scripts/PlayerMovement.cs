@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float Speed;
-    public float jumpHeight;
+    public float jumpHeight = 20;
+    public bool canjump = false;
 
     public Animator animator;
 
@@ -17,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = this.gameObject.GetComponent<Rigidbody>();
+        
     }
 
     // Update is called once per frame
@@ -43,5 +45,31 @@ public class PlayerMovement : MonoBehaviour
             gameObject.transform.position += player.right * Speed * Time.deltaTime;
             animator.SetFloat("Speed", Speed * Time.deltaTime * 10);
         }
+        if (Input.GetKey(KeyCode.Space)&& canjump == true) 
+        {
+            rb.velocity = new Vector3(0, jumpHeight, 0);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (canjump == false)
+        {
+            canjump = false;
+        }
+
+        canjump = true;
+        
+        
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        canjump = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        canjump = true;
     }
 }
