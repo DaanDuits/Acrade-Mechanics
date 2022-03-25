@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class sword_pick_up : MonoBehaviour
+public class pick_up : MonoBehaviour
 {
     public GameObject des;
 
@@ -14,12 +14,16 @@ public class sword_pick_up : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        
-        Destroy(des, 0.2f);
+        if (other.gameObject.tag == "Player")
+        {
+            other.gameObject.GetComponent<PlayerMovement>().pickUp = true;
+            Destroy(des, 0.2f);
+        }
 
     }
     void Update()
     {
-        transform.Rotate(new Vector3(0, 360, 0) * Time.deltaTime);
+        transform.Rotate(new Vector3(0, 100, 0) * Time.deltaTime);
+        
     }
 }

@@ -5,10 +5,16 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float Speed;
-    public float jumpHeight = 20;
+    public float jumpHeight = 10;
     public bool canjump = false;
 
+    public Transform point;
+
     public Animator animator;
+
+    public bool pickUp = false;
+
+    public LayerMask layer;
 
     public Transform player;
     public Rigidbody rb;
@@ -24,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        canjump = Physics.CheckSphere(point.position, 0.4f, layer);
         animator.SetFloat("Speed", 0);
         if (Input.GetKey(KeyCode.W))
         {
@@ -45,31 +52,9 @@ public class PlayerMovement : MonoBehaviour
             gameObject.transform.position += player.right * Speed * Time.deltaTime;
             animator.SetFloat("Speed", Speed * Time.deltaTime * 10);
         }
-        if (Input.GetKey(KeyCode.Space)&& canjump == true) 
+        if (Input.GetKey(KeyCode.Space)&& canjump == true && pickUp == true) 
         {
             rb.velocity = new Vector3(0, jumpHeight, 0);
         }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (canjump == false)
-        {
-            canjump = false;
-        }
-
-        canjump = true;
-        
-        
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        canjump = false;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        canjump = true;
     }
 }
